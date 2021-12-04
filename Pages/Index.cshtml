@@ -1,0 +1,54 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<style>
+    #user-info {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #user-info td, #user-info th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #user-info tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #user-info tr:hover {
+            background-color: #ddd;
+        }
+
+        #user-info th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+</style>
+<div class="text-center">
+    <h1 class="display-4">Welcome @Html.DisplayFor(model => model.UserInfo.person.name)</h1>
+</div>
+
+
+               
+<table id="user-info">
+    <tr>
+        <td>Skills</td>
+        <td>
+            @for (var i = 0; i < Model.UserInfo.strengths.Count; i++)
+            {
+                @*<a asp-action="index" asp-controller="skilldetails" asp-route-skillname="@Model.UserInfo.strengths[i].name">@Model.UserInfo.strengths[i].name</a>
+                <br />*@
+                <a href="/skilldetail?skillname=@Model.UserInfo.strengths[i].name">@Model.UserInfo.strengths[i].name</a>
+                <br />
+            }
+        </td>
+    </tr>
+</table>
+          
